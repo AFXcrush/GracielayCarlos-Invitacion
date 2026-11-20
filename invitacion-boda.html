@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación | Graciela & Carlos</title>
+
+  <!-- Tipografías editables desde las variables --font-display y --font-body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       PERSONALIZACIÓN RÁPIDA
+       Cambia aquí la paleta, tipografías y medidas principales.
+       ========================================================= */
+    :root {
+      --olive: #858d72;
+      --olive-dark: #68715b;
+      --olive-light: #aab09a;
+      --cream: #f8f7f2;
+      --paper: #fffefa;
+      --ink: #33352e;
+      --muted: #77796e;
+      --line: #d8d8ce;
+
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-body: "Montserrat", Arial, sans-serif;
+
+      --page-width: 680px;
+      --section-space: clamp(3.5rem, 9vw, 6.5rem);
+      --shadow: 0 9px 24px rgba(36, 39, 30, .13);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #eeeee9;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 300;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .invitation {
+      width: min(100%, var(--page-width));
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 0 40px rgba(0,0,0,.07);
+    }
+
+    /* Portada tipo sobre */
+    .cover {
+      min-height: clamp(390px, 112vw, 650px);
+      position: relative;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      overflow: hidden;
+      background: var(--olive);
+      color: var(--cream);
+    }
+
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(rgba(100,110,86,.18), rgba(100,110,86,.18)),
+        url("PEGA-AQUI-URL-DEL-PATRON.jpg") center / cover;
+      opacity: .48;
+    }
+
+    /* Si todavía no tienes textura, el fondo liso sigue funcionando. */
+    .cover::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 120%;
+      height: 48%;
+      left: -10%;
+      bottom: -24%;
+      background: var(--olive);
+      border-top: 1px solid rgba(255,255,255,.16);
+      transform: rotate(-8deg);
+      box-shadow: 0 -8px 18px rgba(0,0,0,.08);
+    }
+
+    .monogram {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 25vw, 11rem);
+      font-weight: 400;
+      letter-spacing: -.12em;
+      line-height: 1;
+      padding-right: .12em;
+      color: #f8f6e9;
+      text-shadow: 0 2px 2px rgba(0,0,0,.08);
+    }
+
+    .cover-caption {
+      position: absolute;
+      bottom: 2.3rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.88);
+    }
+
+    /* Introducción y nombres */
+    .intro {
+      padding: var(--section-space) 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 auto 1.3rem;
+      max-width: 34rem;
+      color: var(--muted);
+      font-family: var(--font-display);
+      font-size: .95rem;
+      line-height: 1.55;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .names {
+      margin: 0;
+      color: var(--olive-dark);
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 9vw, 4.2rem);
+      font-weight: 400;
+      line-height: .98;
+    }
+
+    .ampersand {
+      display: block;
+      margin: .15em 0;
+      font-size: .72em;
+      font-style: italic;
+    }
+
+    .event-date {
+      margin: 1.5rem 0 0;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: .12em;
+    }
+
+    /* Fotografías estilo polaroid */
+    .photo-story {
+      position: relative;
+      min-height: 440px;
+      padding: 1rem 1.5rem 3.5rem;
+      background: var(--paper);
+    }
+
+    .polaroid {
+      position: relative;
+      width: 48%;
+      padding: 10px 10px 34px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .polaroid img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      background: #d8d8d1;
+      filter: grayscale(100%);
+    }
+
+    .polaroid-one {
+      margin-left: 4%;
+      transform: rotate(-8deg);
+    }
+
+    .polaroid-two {
+      width: 43%;
+      margin: -2.5rem 5% 0 auto;
+      transform: rotate(9deg);
+    }
+
+    .photo-note {
+      position: absolute;
+      top: 1.3rem;
+      right: 7%;
+      width: 43%;
+      padding: 1.4rem .9rem;
+      background: var(--olive);
+      color: var(--cream);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .photo-note p {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      line-height: 1.35;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .photo-note span {
+      display: block;
+      margin-top: .7rem;
+      font-size: .55rem;
+      line-height: 1.6;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    /* Tarjetas de ceremonia y recepción */
+    .event-cards {
+      position: relative;
+      padding: 2rem 1.2rem var(--section-space);
+      min-height: 390px;
+      background: var(--cream);
+    }
+
+    .info-card {
+      width: 61%;
+      min-height: 220px;
+      padding: 1.8rem 1rem;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .info-card h2 {
+      margin: .7rem 0 .25rem;
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+    }
+
+    .info-card .time {
+      margin: 0 0 .9rem;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+    }
+
+    .info-card p {
+      margin: .5rem 0;
+      font-size: .62rem;
+      line-height: 1.65;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .event-icon {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    .reception-card {
+      position: relative;
+      z-index: 2;
+      width: 57%;
+      margin: -4.2rem 0 0 auto;
+      border: 0;
+      border-radius: 48% 48% 3px 3px;
+      padding-top: 2.7rem;
+      background: var(--olive);
+      color: var(--cream);
+    }
+
+    .outline-link {
+      display: inline-block;
+      margin-top: .8rem;
+      padding: .45rem 1.1rem;
+      border: 1px solid currentColor;
+      border-radius: 30px;
+      color: inherit;
+      font-size: .58rem;
+      letter-spacing: .12em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background .2s, color .2s;
+    }
+
+    .outline-link:hover {
+      background: var(--cream);
+      color: var(--olive-dark);
+    }
+
+    /* Vestimenta y regalos */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 0 1rem var(--section-space);
+      background: var(--cream);
+    }
+
+    .detail-card {
+      min-width: 0;
+      padding: 1.5rem .8rem;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+
+    .detail-card img {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto .7rem;
+      object-fit: contain;
+    }
+
+    .detail-card h2 {
+      margin: .3rem 0 .6rem;
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .detail-card p {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .dress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 1rem;
+    }
+
+    .dress-dots span {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--dot);
+    }
+
+    /* Confirmación */
+    .rsvp-section {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr .85fr;
+      align-items: center;
+      gap: 1rem;
+      padding: 2.5rem 1rem 4rem;
+      background: var(--paper);
+    }
+
+    .rsvp-card {
+      position: relative;
+      z-index: 1;
+      padding: 2.3rem 1rem;
+      background: var(--olive);
+      color: var(--cream);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .rsvp-card img {
+      width: 55px;
+      height: 55px;
+      margin: 0 auto .8rem;
+      object-fit: contain;
+    }
+
+    .rsvp-card h2 {
+      margin: 0 0 .7rem;
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 400;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .rsvp-card p {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1rem;
+    }
+
+    .rsvp-photo {
+      width: 100%;
+      padding: 9px 9px 28px;
+      background: white;
+      box-shadow: var(--shadow);
+      transform: rotate(9deg) translateY(1.5rem);
+    }
+
+    .rsvp-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      filter: grayscale(100%);
+      background: #d8d8d1;
+    }
+
+    .rsvp-photo figcaption {
+      padding-top: .6rem;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: .08em;
+    }
+
+    footer {
+      padding: 1rem;
+      background: var(--olive);
+      color: var(--cream);
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 5vw, 2rem);
+      letter-spacing: .08em;
+    }
+
+    footer small {
+      display: block;
+      margin-top: .2rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: .15em;
+    }
+
+    /* Ajustes para móviles pequeños */
+    @media (max-width: 380px) {
+      .photo-story { min-height: 390px; }
+      .info-card { width: 66%; padding-inline: .65rem; }
+      .reception-card { width: 61%; }
+      .details-grid { gap: .55rem; padding-inline: .65rem; }
+      .detail-card { padding-inline: .55rem; }
+      .detail-card h2 { font-size: 1.4rem; }
+      .rsvp-section { gap: .65rem; }
+    }
+
+    @media (min-width: 681px) {
+      .cover { min-height: 650px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="invitation">
+
+    <!-- PORTADA: reemplaza las iniciales por las de la pareja -->
+    <header class="cover">
+      <div class="monogram">G<span style="font-size:.78em">C</span></div>
+      <div class="cover-caption">Nuestra boda</div>
+    </header>
+
+    <!-- PRESENTACIÓN -->
+    <section class="intro">
+      <p class="eyebrow">
+        Con la bendición de Dios y nuestros padres tenemos el honor de invitarlos
+        a celebrar nuestro matrimonio
+      </p>
+      <h1 class="names">
+        Graciela
+        <span class="ampersand">&</span>
+        Carlos
+      </h1>
+      <p class="event-date">JUEVES · 17.12.26</p>
+    </section>
+
+    <!-- FOTOGRAFÍAS: cambia cada src por tu propia URL -->
+    <section class="photo-story" aria-label="Fotografías de la pareja">
+      <div class="photo-note">
+        <p>Graciela<br>&<br>Carlos</p>
+        <span>Se realizará el día<br>jueves<br>17.12.26</span>
+      </div>
+
+      <figure class="polaroid polaroid-one">
+        <img src="./assets/GC1.jpeg" alt="Fotografía de la pareja">
+      </figure>
+
+      <figure class="polaroid polaroid-two">
+        <img src="./assets/GC2.jpeg" alt="Fotografía de la pareja">
+      </figure>
+    </section>
+
+    <!-- CEREMONIA Y RECEPCIÓN -->
+    <section class="event-cards">
+      <article class="info-card ceremony-card">
+        <img class="event-icon" src="URL-ICONO-CEREMONIA.svg" alt="">
+        <h2>Ceremonia</h2>
+        <p class="time">12:00 PM</p>
+        <p>Municipalidad de Santiago de Surco<br>Av. Monte de los Olivos 545, Santiago de Surco 15039<br>Lima, Perú</p>
+        <a class="outline-link" href="https://maps.app.goo.gl/t9Nn8CvGam5mzYXXA?g_st=aw" target="_blank" rel="noopener">Ubicación</a>
+      </article>
+
+      <article class="info-card reception-card">
+        <img class="event-icon" src="URL-ICONO-RECEPCION.svg" alt="">
+        <h2>Recepción</h2>
+        <p class="time">1:00 PM</p>
+        <p>C. Guillermo de la Flor 143, Santiago de Surco 15039<br>Lima, Perú</p>
+        <a class="outline-link" href="https://maps.app.goo.gl/4D2BJtBD2RPktMBw5?g_st=aw" target="_blank" rel="noopener">Ubicación</a>
+      </article>
+    </section>
+
+    <!-- VESTIMENTA Y REGALOS -->
+    <section class="details-grid">
+      <article class="detail-card">
+        <img src="URL-ICONO-VESTIMENTA.svg" alt="">
+        <h2>Vestimenta</h2>
+        <p><strong>Formal</strong><br>
+          Ellas: vestido largo (evitar el color blanco).<br>
+          Ellos: traje completo y corbata.
+        </p>
+        <div class="dress-dots" aria-label="Paleta sugerida">
+          <span style="--dot:#a6ad8e"></span>
+          <span style="--dot:#86515c"></span>
+          <span style="--dot:#641e2c"></span>
+          <span style="--dot:#182c55"></span>
+          <span style="--dot:#171717"></span>
+        </div>
+      </article>
+
+      <article class="detail-card">
+        <img src="URL-ICONO-REGALO.svg" alt="">
+        <h2>Regalos</h2>
+        <p>Tu presencia es el mejor regalo para nosotros. Si deseas tener un detalle con nosotros, tendremos un pozo de los deseos para contribuir a esta nueva etapa.</p>
+      </article>
+    </section>
+
+    <!-- CONFIRMACIÓN Y FOTO FINAL -->
+    <section class="rsvp-section">
+      <article class="rsvp-card">
+        <img src="URL-ICONO-PLUMA.svg" alt="">
+        <h2>Confirmación<br>de asistencia</h2>
+        <p>Ayúdanos a preparar este día.</p>
+        <a class="outline-link" href="URL-DE-CONFIRMACION" target="_blank" rel="noopener">Confirmar aquí</a>
+      </article>
+
+      <figure class="rsvp-photo">
+        <img src="./assets/GC3.jpeg" alt="Fotografía de la pareja">
+        <figcaption>¡Te esperamos!</figcaption>
+      </figure>
+    </section>
+
+    <footer>
+      <p>Graciela & Carlos</p>
+      <small>17.12.26</small>
+    </footer>
+
+  </main>
+</body>
+</html>
