@@ -13,6 +13,8 @@
       rel="stylesheet"
     />
 
+    <script src="./audio.js" defer></script>
+
     <style>
       /* =========================================================
        PERSONALIZACIÓN RÁPIDA
@@ -67,7 +69,7 @@
 
       /* Portada tipo sobre */
       .cover {
-        min-height: clamp(390px, 112vw, 650px);
+        height: 100vh;
         position: relative;
         display: grid;
         place-items: center;
@@ -540,7 +542,6 @@
       /* PORTADA */
       .cover {
         width: 100%;
-        min-height: clamp(380px, 90vw, 650px);
       }
 
       .monogram {
@@ -854,6 +855,77 @@
           padding-inline: 2rem;
         }
       }
+
+      /* HEADER A PANTALLA COMPLETA */
+      header {
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* BOTÓN DE MÚSICA */
+      .music-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        margin-top: 35px;
+        padding: 14px 28px;
+
+        background: var(--olive);
+        color: var(--cream);
+        border: 1px solid var(--olive);
+        border-radius: 50px;
+
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        cursor: pointer;
+        transition: all 0.35s ease;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+      }
+
+      .music-button:hover {
+        background: transparent;
+        color: var(--olive-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+      }
+
+      .music-button:active {
+        transform: scale(0.97);
+      }
+
+      .music-button:focus-visible {
+        outline: 2px solid var(--olive);
+        outline-offset: 4px;
+      }
+
+      /* MÓVILES */
+      @media (max-width: 480px) {
+        header {
+          padding: 32px 20px;
+        }
+
+        .music-button {
+          margin-top: 28px;
+          padding: 13px 23px;
+          font-size: 10px;
+          letter-spacing: 1.5px;
+        }
+      }
     </style>
   </head>
 
@@ -862,6 +934,15 @@
       <!-- PORTADA: reemplaza las iniciales por las de la pareja -->
       <header class="cover">
         <div class="monogram">G<span style="font-size: 0.78em">C</span></div>
+
+        <audio id="weddingMusic" loop>
+          <source src="./assets/EdSheeran-Perfect.mp3" type="audio/mpeg" />
+        </audio>
+
+        <button id="musicButton" class="music-button">
+          ♡ Reproducir canción
+        </button>
+
         <div class="cover-caption">Nuestra boda</div>
       </header>
 
