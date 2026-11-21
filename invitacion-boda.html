@@ -82,9 +82,6 @@
         position: absolute;
         inset: 0;
         z-index: -2;
-        /* background:
-          linear-gradient(rgba(100, 110, 86, 0.18), rgba(100, 110, 86, 0.18)),
-          url("PEGA-AQUI-URL-DEL-PATRON.jpg") center / cover; */
         opacity: 0.48;
       }
 
@@ -509,6 +506,352 @@
       @media (min-width: 681px) {
         .cover {
           min-height: 650px;
+        }
+      }
+
+      /* =====================================================
+   RESPONSIVE PATCH
+   Adaptación para móviles, tablets y escritorio
+   ===================================================== */
+
+      /* Evitar desbordamientos horizontales */
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        min-width: 320px;
+      }
+
+      .invitation {
+        width: 100%;
+        max-width: var(--page-width);
+        margin-inline: auto;
+        overflow: hidden;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      /* PORTADA */
+      .cover {
+        width: 100%;
+        min-height: clamp(380px, 90vw, 650px);
+      }
+
+      .monogram {
+        font-size: clamp(5rem, 22vw, 11rem);
+      }
+
+      .cover-caption {
+        font-size: clamp(0.8rem, 3vw, 1.05rem);
+      }
+
+      /* INTRODUCCIÓN */
+      .intro {
+        padding-inline: clamp(1rem, 5vw, 2rem);
+      }
+
+      .eyebrow {
+        width: 100%;
+        font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+      }
+
+      .names {
+        font-size: clamp(2.5rem, 10vw, 4.2rem);
+      }
+
+      .event-date {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+      }
+
+      /* FOTOGRAFÍAS */
+      .photo-story {
+        width: 100%;
+        min-height: clamp(380px, 100vw, 540px);
+        padding-inline: clamp(0.8rem, 4vw, 1.5rem);
+        overflow: hidden;
+      }
+
+      .polaroid {
+        width: 48%;
+        max-width: 300px;
+        min-width: 0;
+        padding: clamp(6px, 2vw, 10px);
+        padding-bottom: 28px;
+      }
+
+      .polaroid img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto;
+        object-fit: contain;
+      }
+
+      .polaroid-one {
+        margin-left: 3%;
+        transform: rotate(-6deg);
+      }
+
+      .polaroid-two {
+        width: 43%;
+        max-width: 270px;
+        margin: -1.5rem 4% 0 auto;
+        transform: rotate(6deg);
+      }
+
+      .photo-note {
+        width: min(43%, 240px);
+        right: 4%;
+        top: 1rem;
+        padding: clamp(0.8rem, 3vw, 1.4rem);
+        z-index: 2;
+      }
+
+      .photo-note p {
+        font-size: clamp(0.85rem, 3.5vw, 1.05rem);
+      }
+
+      .photo-note span {
+        font-size: clamp(0.48rem, 1.8vw, 0.55rem);
+      }
+
+      /* CEREMONIA Y RECEPCIÓN */
+      .event-cards {
+        width: 100%;
+        min-height: auto;
+        padding: 2rem clamp(0.8rem, 4vw, 1.2rem) 4rem;
+        overflow: hidden;
+      }
+
+      .info-card {
+        width: 61%;
+        max-width: 420px;
+        min-width: 0;
+        min-height: 220px;
+        padding: clamp(1rem, 4vw, 1.8rem);
+        overflow-wrap: break-word;
+      }
+
+      .info-card h2 {
+        font-size: clamp(1.35rem, 5vw, 1.75rem);
+      }
+
+      .info-card .time {
+        font-size: clamp(1.1rem, 4vw, 1.35rem);
+      }
+
+      .info-card p {
+        font-size: clamp(0.55rem, 2vw, 0.62rem);
+        overflow-wrap: anywhere;
+      }
+
+      .reception-card {
+        width: 57%;
+        max-width: 390px;
+        margin: -3rem 0 0 auto;
+        padding-top: 2.7rem;
+      }
+
+      .event-icon {
+        display: block;
+        width: clamp(48px, 13vw, 100px);
+        height: clamp(48px, 13vw, 100px);
+        flex-shrink: 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        -webkit-mask-size: contain;
+
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+      }
+
+      /* DETALLES */
+      .details-grid {
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(0.5rem, 2.5vw, 1rem);
+        padding-inline: clamp(0.6rem, 3vw, 1rem);
+      }
+
+      .detail-card {
+        min-width: 0;
+        padding: clamp(1rem, 4vw, 1.5rem) clamp(0.5rem, 2vw, 0.8rem);
+        overflow-wrap: break-word;
+      }
+
+      .detail-card h2 {
+        font-size: clamp(1.15rem, 4.5vw, 1.65rem);
+      }
+
+      .detail-card p {
+        font-size: clamp(0.85rem, 3vw, 1rem);
+        overflow-wrap: anywhere;
+      }
+
+      .dress-dots {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .dress-dots span {
+        flex-shrink: 0;
+      }
+
+      /* CONFIRMACIÓN */
+      .rsvp-section {
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+        gap: clamp(0.5rem, 3vw, 1rem);
+        padding-inline: clamp(0.7rem, 3vw, 1rem);
+        overflow: hidden;
+      }
+
+      .rsvp-card {
+        min-width: 0;
+        padding: clamp(1.2rem, 4vw, 2.3rem) clamp(0.6rem, 2vw, 1rem);
+      }
+
+      .rsvp-card h2 {
+        font-size: clamp(1.1rem, 4.5vw, 1.65rem);
+        overflow-wrap: break-word;
+      }
+
+      .rsvp-card p {
+        font-size: clamp(0.85rem, 3vw, 1rem);
+      }
+
+      .rsvp-card .outline-link {
+        max-width: 100%;
+        padding-inline: 0.65rem;
+        font-size: clamp(0.48rem, 1.8vw, 0.58rem);
+      }
+
+      .rsvp-photo {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 7px 7px 22px;
+        transform: rotate(5deg);
+      }
+
+      .rsvp-photo img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto;
+        object-fit: contain;
+      }
+
+      .rsvp-photo figcaption {
+        font-size: clamp(0.8rem, 3vw, 1rem);
+      }
+
+      /* FOOTER */
+      footer {
+        width: 100%;
+        padding: 1.2rem 0.7rem;
+      }
+
+      footer p {
+        font-size: clamp(1.2rem, 5vw, 2rem);
+      }
+
+      /* MÓVILES PEQUEÑOS */
+      @media (max-width: 420px) {
+        .photo-story {
+          min-height: 390px;
+        }
+
+        .polaroid {
+          padding: 6px 6px 23px;
+        }
+
+        .polaroid-one {
+          width: 49%;
+        }
+
+        .polaroid-two {
+          width: 43%;
+          margin-top: -1rem;
+        }
+
+        .photo-note {
+          width: 42%;
+          right: 3%;
+        }
+
+        .event-cards {
+          padding-inline: 0.6rem;
+        }
+
+        .info-card {
+          width: 68%;
+          padding-inline: 0.6rem;
+        }
+
+        .reception-card {
+          width: 64%;
+          margin-top: -2rem;
+        }
+
+        .details-grid {
+          gap: 0.5rem;
+          padding-inline: 0.5rem;
+        }
+
+        .detail-card {
+          padding-inline: 0.45rem;
+        }
+
+        .dress-dots {
+          gap: 5px;
+        }
+
+        .dress-dots span {
+          width: 12px;
+          height: 12px;
+        }
+
+        .rsvp-section {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+          gap: 0.5rem;
+        }
+      }
+
+      /* TABLETS Y ESCRITORIO */
+      @media (min-width: 768px) {
+        .photo-story {
+          min-height: 540px;
+        }
+
+        .polaroid-one {
+          margin-left: 5%;
+        }
+
+        .polaroid-two {
+          margin-top: -2rem;
+        }
+
+        .event-cards {
+          padding-inline: 2rem;
+        }
+
+        .details-grid {
+          padding-inline: 2rem;
+        }
+
+        .rsvp-section {
+          padding-inline: 2rem;
         }
       }
     </style>
